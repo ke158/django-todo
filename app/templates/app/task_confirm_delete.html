@@ -1,0 +1,13 @@
+{% extends 'app/base.html' %} {% block content %}
+<div class="header">
+  <h1>タスクの削除</h1>
+</div>
+<div class="task-wrapper">
+  <form action="" method="post">
+    {% csrf_token %}
+    <p>{{task}}を本当にタスクを削除しますか？</p>
+    <input type="submit" value="削除" class="btn" />
+    <a href="{% url 'tasks' %}" class="btn">戻る</a>
+  </form>
+</div>
+{% endblock content %}

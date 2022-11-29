@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %} {% block content %}
+
+<div class="header">
+  <h1>タスクの追加・編集</h1>
+</div>
+
+<div class="task-wrapper">
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="id_title">タイトル:</label>
+    {{form.title}}
+
+    <label for="id_description">タスクの内容:</label>
+    {{form.description}}
+
+    <div class="task-title">
+      <label for="id_completed">Completed:</label>
+      {{form.completed}}
+    </div>
+
+    <div>
+      <input type="submit" value="追加・編集" class="btn" />
+      <a class="btn" href="{% url 'tasks' %}">戻る</a>
+    </div>
+  </form>
+</div>
+{% endblock content %}

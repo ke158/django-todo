@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %} {% block content %}
+<div class="header">
+  <h1 style="color: white">ログイン</h1>
+</div>
+<div class="task-wrapper">
+  <form action="" method="post">
+    {% csrf_token %} {{form.as_p}}
+    <input type="submit" value="ログイン" class="btn" />
+  </form>
+</div>
+<hr />
+<div class="account-wrapper">
+  <p>アカウントを持っていませんか？</p>
+  <a class="btn" href="{% url 'register' %}">新規登録</a>
+</div>
+{% endblock content %}

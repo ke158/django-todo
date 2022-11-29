@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %} {% block content %}
+<div class="header">
+  <h1 style="color: white">新規登録</h1>
+</div>
+<div class="task-wrapper">
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="id_username">ユーザー名</label>
+    {{form.username}}
+    <label for="id_password1">パスワード</label>
+    {{form.password1}}
+    <label for="id_password2">確認用のパスワード</label>
+    {{form.password2}}
+    <div>
+      <input
+        type="submit"
+        value="新規登録"
+        class="btn"
+        style="margin-top: 10px"
+      />
+    </div>
+  </form>
+</div>
+<hr />
+<div class="account-wrapper">
+  <p>既にアカウントを持っていますか？</p>
+  <a class="btn" href="{% url 'login' %}">ログイン</a>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %} {% block content %}
+<div class="header">
+  <h1>タスク詳細</h1>
+</div>
+<div class="task-wrapper">
+  <div class="task-item">
+    <div class="task-name">タイトル:</div>
+    <div class="task">{{ task.title }}</div>
+  </div>
+  <div class="task-item">
+    <div class="task-name">タスク内容:</div>
+    <div class="task">{{ task.description }}</div>
+  </div>
+  <div class="task-item">
+    <div class="task-name">Completed:</div>
+    {% if task.completed %}
+    <div class="task">完了</div>
+    {% else %}
+    <div class="task">未完了</div>
+    {% endif %}
+  </div>
+  <div><a class="btn" href="{% url 'tasks' %}">戻る</a></div>
+</div>
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'app/base.html' %} {% block content %}
+
+<div class="header">
+  <h1>{{request.user}}のタスク</h1>
+</div>
+<div class="search-wrapper">
+  <form action="" method="get">
+    <input type="text" name="search" value="{{search}}" class="search-input" />
+    <input type="submit" value="検索" class="btn" />
+  </form>
+  <a class="add-button" href="{% url 'create-task' %}">＋</a>
+</div>
+
+<div>
+  {% for task in tasks %}
+  <div class="tasks-wrapper">
+    {% if task.completed %}
+    <!-- タスクが完了 -->
+    <div class="task-title">
+      <div class="task-completed-icon"></div>
+      <s><a href="{% url 'task' task.id %}">{{task.title}}</a></s>
+    </div>
+    <div>
+      <a class="edit-button" href="{% url 'edit-task' task.id %}">編集</a>
+      <a class="delete-button" href="{% url 'delete-task' task.id %}">削除</a>
+    </div>
+    {% else %}
+    <!-- タスクが未完了 -->
+    <div class="task-title">
+      <div class="task-in-completed-icon"></div>
+      <a href="{% url 'task' task.id %}">{{task.title}}</a>
+    </div>
+    <div>
+      <a class="edit-button" href="{% url 'edit-task' task.id %}">編集</a>
+      <a class="delete-button" href="{% url 'delete-task' task.id %}">削除</a>
+    </div>
+    {% endif %}
+  </div>
+  {% empty %}
+  <h3 style="padding-left: 20px">タスクがありません</h3>
+  {% endfor %}
+</div>
+
+<div class="loginAndLogout">
+  {% if request.user.is_authenticated %}
+  <a href="{% url 'logout' %}">ログアウト</a>
+  <a href="{% url 'delete-user' user.id %}">ユーザー削除</a>
+  {% else %}
+  <a href="{% url 'login' %}">ログイン</a>
+  {% endif %}
+</div>
+{% endblock content %}
